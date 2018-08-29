@@ -35,10 +35,7 @@ public class FindOtherGameobjects : MonoBehaviour {
 			{
 				if (obj.name != this.name)
 				{
-					if(obj.GetComponent<NavMeshAgent>())
-					{
-						Debug.Log ("Active scene have '" + obj.name + "'.");
-					}
+					Debug.Log ("Active scene have '" + obj.name + "'.");
 				}
 			}
 		}
