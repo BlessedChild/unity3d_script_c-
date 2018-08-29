@@ -12,22 +12,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class FindOtherGameobjects : MonoBehaviour {
 
 	Scene current_scene;
-	GameObject[] objs;  
+	GameObject[] objs;
 
 	void Start()
 	{
-		SceneManager.SetActiveScene( SceneManager.GetSceneByName( "FaileOfRestart" ) );
+		current_scene = SceneManager.GetActiveScene ();
 	}
 
-	public void FindOtherobjs()
+	public void FindOtherobj()
 	{
-		current_scene = SceneManager.GetActiveScene ();
-
 		if(current_scene.IsValid())
 		{
 			objs = current_scene.GetRootGameObjects ();
@@ -36,7 +35,10 @@ public class FindOtherGameobjects : MonoBehaviour {
 			{
 				if (obj.name != this.name)
 				{
-					Debug.Log ("Active scene have '" + obj.name + "'.");
+					if(obj.GetComponent<NavMeshAgent>())
+					{
+						Debug.Log ("Active scene have '" + obj.name + "'.");
+					}
 				}
 			}
 		}
